@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Image } from "react-native";
+import { View, Text, TextInput, Image, StatusBar } from "react-native";
 
 import IllustrationImg from "../../assets/illustration.png";
 import { styles } from "./styles";
@@ -7,6 +7,11 @@ import { styles } from "./styles";
 export function SignIn() {
   return (
     <View style={styles.container}>
+      <StatusBar
+        barStyle={"light-content"}
+        backgroundColor="transparent"
+        translucent
+      ></StatusBar>
       <Image
         source={IllustrationImg}
         style={styles.image}
