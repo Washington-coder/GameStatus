@@ -13,20 +13,20 @@ export const styles = StyleSheet.create({
     height: 360,
   },
   content: {
-    marginTop: -110,
+    marginTop: -130,
     paddingHorizontal: 50,
   },
 
   title: {
     color: theme.colors.heading,
     textAlign: "center",
-    fontSize: 40,
+    fontSize: 30,
     marginBottom: 16,
   },
   subtitle: {
     color: theme.colors.heading,
     fontSize: 15,
     textAlign: "center",
-    marginBottom: 44,
+    marginBottom: 34,
   },
 });
