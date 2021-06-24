@@ -8,6 +8,7 @@ import {
 } from "@expo-google-fonts/rajdhani";
 
 import { SignIn } from "./src/screens/Signin/index";
+import { StatusBar } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,5 +22,14 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <SignIn />;
+  return (
+    <>
+      <StatusBar
+        barStyle={"light-content"}
+        backgroundColor="transparent"
+        translucent
+      ></StatusBar>
+      <SignIn />{" "}
+    </>
+  );
 }
