@@ -16,7 +16,7 @@ type Props = TouchableOpacityProps & {
 
 export function ButtonIcon({ title, ...rest }: Props) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.7}>
       <View style={styles.iconWrapper}>
         <Image source={DiscordImg} style={styles.icon}></Image>
       </View>
