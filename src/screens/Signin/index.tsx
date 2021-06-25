@@ -24,7 +24,7 @@ export function SignIn() {
           Crie grupos para jogar seus games {`\n`}
           favoritos com seus amigos
         </Text>
-        <ButtonIcon title="Entrar com Discord"></ButtonIcon>
+        <ButtonIcon title="Entre com Discord"></ButtonIcon>
       </View>
     </View>
   );
