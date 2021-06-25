@@ -2,7 +2,7 @@ import React from "react";
 import { useFonts } from "expo-font";
 import { Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
 import AppLoading from "expo-app-loading";
-import { Home } from "./src/screens/Home/index";
+import { Routes } from "./src/routes";
 import { StatusBar } from "react-native";
 import { Background } from "./src/components/Background";
 import {
@@ -29,7 +29,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       ></StatusBar>
-      <Home />
+      <Routes />
     </Background>
   );
 }
