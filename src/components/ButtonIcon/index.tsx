@@ -9,6 +9,7 @@ import {
 
 import DiscordImg from "../../assets/discord.png";
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = TouchableOpacityProps & {
   title: string;
@@ -16,7 +17,7 @@ type Props = TouchableOpacityProps & {
 
 export function ButtonIcon({ title, ...rest }: Props) {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.7}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.5} {...rest}>
       <View style={styles.iconWrapper}>
         <Image source={DiscordImg} style={styles.icon}></Image>
       </View>
