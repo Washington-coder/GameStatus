@@ -15,4 +15,8 @@ export const styles = StyleSheet.create({
   content: {
     marginTop: 42,
   },
+  maches: {
+    marginTop: 24,
+    marginLeft: 24,
+  },
 });
