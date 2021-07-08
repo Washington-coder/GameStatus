@@ -6,9 +6,11 @@ import IllustrationImg from "../../assets/illustration.png";
 import { styles } from "./styles";
 import { ButtonIcon } from "../../components/ButtonIcon";
 import { Background } from "../../components/Background";
+import { useAuth } from "../../hooks/auth";
 
 export function SignIn() {
   const navigation = useNavigation();
+  const { user } = useAuth();
 
   function handleSignIn() {
     navigation.navigate("Home");

@@ -5,6 +5,7 @@ import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
 import { StatusBar } from "react-native";
 import { Background } from "./src/components/Background";
+import { AuthProvider } from "./src/hooks/auth";
 
 import {
   Rajdhani_500Medium,
@@ -30,7 +31,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       ></StatusBar>
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Background>
   );
 }
