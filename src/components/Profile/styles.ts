@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     fontFamily: theme.fonts.title700,
     fontSize: 24,
     color: theme.colors.heading,
+    paddingRight: 5,
   },
   message: {
     fontFamily: theme.fonts.text400,
