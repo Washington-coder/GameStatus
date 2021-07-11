@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { ImageBackground, Text, View, FlatList, Alert } from "react-native";
+import * as Linking from "expo-linking";
+import {
+  ImageBackground,
+  Text,
+  View,
+  FlatList,
+  Alert,
+  Share,
+  Platform,
+} from "react-native";
 import { Background } from "../../components/Background";
 import { ListHeader } from "../../components/ListHeader";
 import { ButtonIcon } from "../../components/ButtonIcon";
@@ -25,7 +34,6 @@ type GuildWidget = {
   name: string;
   instant_invite: string;
   members: MemberProps[];
-  presence_count: number;
 };
 
 export function AppointmentDetails() {
@@ -39,6 +47,7 @@ export function AppointmentDetails() {
       const response = await api.get(
         `/guilds/${guildSelected.guild.id}/widget.json`
       );
+      console.log(response.data);
       setWidget(response.data);
       setLoading(false);
     } catch (error) {
@@ -50,6 +59,22 @@ export function AppointmentDetails() {
     }
   }
 
+  function handleShareInvitation() {
+    const message =
+      Platform.OS === "android"
+        ? `Junte-se a ${guildSelected.guild.name}`
+        : widget.instant_invite;
+
+    Share.share({
+      message,
+      url: widget.instant_invite,
+    });
+  }
+
+  function handleOpenGuild() {
+    Linking.openURL(widget.instant_invite);
+  }
+
   useEffect(() => {
     fetchGuildWidget();
   }, []);
@@ -59,13 +84,15 @@ export function AppointmentDetails() {
       <Header
         title="Detalhes"
         action={
-          <BorderlessButton>
-            <Fontisto
-              name="share"
-              size={24}
-              color={theme.colors.primary}
-            ></Fontisto>
-          </BorderlessButton>
+          guildSelected.guild.owner && (
+            <BorderlessButton onPress={handleShareInvitation}>
+              <Fontisto
+                name="share"
+                size={24}
+                color={theme.colors.primary}
+              ></Fontisto>
+            </BorderlessButton>
+          )
         }
       />
       <ImageBackground source={BannerImg} style={styles.banner}>
@@ -79,7 +106,10 @@ export function AppointmentDetails() {
         <Load />
       ) : (
         <>
-          <ListHeader title={"Jogadores"} subtitle={"Total 6"} />
+          <ListHeader
+            title={"Jogadores"}
+            subtitle={`${widget.members.length}`}
+          />
           <FlatList
             data={widget.members}
             keyExtractor={(item) => item.id}
@@ -90,7 +120,7 @@ export function AppointmentDetails() {
         </>
       )}
       <View style={styles.footer}>
-        <ButtonIcon title={"Entrar na partida"} />
+        <ButtonIcon title={"Entrar na partida"} onPress={handleOpenGuild} />
       </View>
     </Background>
   );
